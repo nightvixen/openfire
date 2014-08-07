@@ -650,8 +650,8 @@ public class IQPEPHandler extends IQHandler implements ServerIdentitiesProvider,
                 final XMPPServer server = XMPPServer.getInstance();
                 final Roster roster = server.getRosterManager().getRoster(availableSessionJID.getNode());
                 for (final RosterItem item : roster.getRosterItems()) {
-                    if (server.isLocal(item.getJid()) && (item.getSubStatus() == RosterItem.SUB_BOTH ||
-                            item.getSubStatus() == RosterItem.SUB_TO)) {
+                    /*if (server.isLocal(item.getJid()) && (item.getSubStatus() == RosterItem.SUB_BOTH ||
+                            item.getSubStatus() == RosterItem.SUB_TO)) */ {
                         PEPService pepService = pepServiceManager.getPEPService(item.getJid().toBareJID());
                         if (pepService != null) {
                             pepService.sendLastPublishedItems(availableSessionJID);
