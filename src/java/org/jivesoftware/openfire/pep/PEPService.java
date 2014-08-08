@@ -156,10 +156,11 @@ public class PEPService implements PubSubService, Cacheable {
             leafDefaultConfiguration.setNotifyDelete(true);
             leafDefaultConfiguration.setNotifyRetract(true);
             leafDefaultConfiguration.setPersistPublishedItems(true);
-            leafDefaultConfiguration.setMaxPublishedItems(-1);
+            leafDefaultConfiguration.setMaxPublishedItems(1);
             leafDefaultConfiguration.setPresenceBasedDelivery(false);
             leafDefaultConfiguration.setSendItemSubscribe(true);
             leafDefaultConfiguration.setSubscriptionEnabled(true);
+            leafDefaultConfiguration.setMaxLeafNodes(1);
             leafDefaultConfiguration.setReplyPolicy(null);
             PubSubPersistenceManager.createDefaultConfiguration(this, leafDefaultConfiguration);
         }
@@ -177,9 +178,10 @@ public class PEPService implements PubSubService, Cacheable {
             collectionDefaultConfiguration.setNotifyRetract(true);
             collectionDefaultConfiguration.setPresenceBasedDelivery(false);
             collectionDefaultConfiguration.setSubscriptionEnabled(true);
+            collectionDefaultConfiguration.setPersistPublishedItems(true);
             collectionDefaultConfiguration.setReplyPolicy(null);
             collectionDefaultConfiguration.setAssociationPolicy(CollectionNode.LeafNodeAssociationPolicy.all);
-            collectionDefaultConfiguration.setMaxLeafNodes(-1);
+            collectionDefaultConfiguration.setMaxLeafNodes(1); // was -1
             PubSubPersistenceManager.createDefaultConfiguration(this, collectionDefaultConfiguration);
         }
 

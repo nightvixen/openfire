@@ -441,7 +441,7 @@ public class UserManager implements IQResultListener {
                 for (Iterator it=child.elementIterator("identity"); it.hasNext();) {
                     Element identity = (Element) it.next();
                     String accountType = identity.attributeValue("type");
-                    if ("registered".equals(accountType) || "admin".equals(accountType)) {
+                    if ( true /*"registered".equals(accountType) || "admin".equals(accountType)*/) {
                         isRegistered = Boolean.TRUE;
                         break;
                     }

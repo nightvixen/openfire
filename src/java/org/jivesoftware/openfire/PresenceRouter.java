@@ -28,6 +28,7 @@ import org.jivesoftware.openfire.interceptor.InterceptorManager;
 import org.jivesoftware.openfire.interceptor.PacketRejectedException;
 import org.jivesoftware.openfire.session.ClientSession;
 import org.jivesoftware.openfire.session.Session;
+import org.jivesoftware.openfire.user.RemotePresenceEventDispatcher;
 import org.jivesoftware.util.LocaleUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -151,6 +152,18 @@ public class PresenceRouter extends BasicModule {
                     // Trigger events for presences of remote users
                     if (senderJID != null && !serverName.equals(senderJID.getDomain()) &&
                             !routingTable.hasComponentRoute(senderJID)) {
+
+
+                        if (type == null) {
+                             // Remote user has become available
+                            Log.debug("Called remote presence dispatacher");
+                            RemotePresenceEventDispatcher.availableRemoteUser(packet);
+                        }
+                        else if (type == Presence.Type.unavailable) {
+                            // Remote user is now unavailable
+                            RemotePresenceEventDispatcher.unavailableRemoteUser(packet);
+                        }
+
                         entityCapsManager.process(packet);
                     }
                     

@@ -527,11 +527,11 @@ public class PubSubEngine {
             return;
         }
         // Check if the subscriber is an anonymous user
-        if (!UserManager.getInstance().isRegisteredUser(subscriberJID)) {
+/*        if (!UserManager.getInstance().isRegisteredUser(subscriberJID)) {
             // Anonymous users cannot subscribe to the node. Return forbidden error
             sendErrorPacket(iq, PacketError.Condition.forbidden, null);
             return;
-        }
+        }*/
         // Check if the subscription owner is a user with outcast affiliation
         NodeAffiliate nodeAffiliate = node.getAffiliate(owner);
         if (nodeAffiliate != null &&
